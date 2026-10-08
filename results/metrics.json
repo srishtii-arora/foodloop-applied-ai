@@ -1,0 +1,34 @@
+{
+  "project": "FoodLoop sector-flow regression benchmark",
+  "dataset": "U.S. Food Waste Flows Between Sectors, 2018 v1.3.2, method 2",
+  "target": "log1p(FlowAmount in kg)",
+  "rows_after_cleaning": 8315,
+  "producing_sector_groups": 1025,
+  "split": "70/15/15 by producing-sector group (train/validation/test); seed 42",
+  "n_train": 5682,
+  "n_validation": 991,
+  "n_test": 1642,
+  "model": "ridge regression over one-hot NAICS sector prefixes and consumed-sector code",
+  "tuning": {
+    "alpha_candidates": [
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "selected_alpha": 10.0,
+    "validation_rmse_log1p_kg": 1.7304815003583647
+  },
+  "test_model": {
+    "mae_log1p_kg": 0.9423956401014358,
+    "rmse_log1p_kg": 1.2580263266992802,
+    "r2_log1p_kg": 0.7304484426938376
+  },
+  "test_median_baseline": {
+    "mae_log1p_kg": 1.9800709274519115,
+    "rmse_log1p_kg": 2.4245781693029027,
+    "r2_log1p_kg": -0.0012321046908629896
+  },
+  "interpretation": "Exploratory fit to EPA modeled 2018 national flow estimates; not donation-level data or a forecast of current/local surplus.",
+  "seed": 42
+}
